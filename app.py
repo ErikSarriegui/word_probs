@@ -70,10 +70,10 @@ def evaluate_word_probs(frases, model_id):
     )
     return resultados
 
-def predict(text, candidates, model_id):
+def predict(text, candidates):
     candidates_list = [c.strip() for c in candidates.split(';') if c.strip()]
     frases = [{"text": text, "words": candidates_list}]
-    results = evaluate_word_probs(frases, model_id)
+    results = evaluate_word_probs(frases, "google-bert/bert-base-multilingual-cased")
     
     output = []
     for result in results:
@@ -86,8 +86,7 @@ iface = gr.Interface(
     fn=predict,
     inputs=[
         gr.Textbox(label="Texto con [MASK]", placeholder="Ej: [MASK] is a fashion model"),
-        gr.Textbox(label="Candidatos (separados por ;)", placeholder="Ej: He; She"),
-        gr.Textbox(label="Model ID (Debe ser un encoder)", value="google-bert/bert-base-uncased")
+        gr.Textbox(label="Candidatos (separados por ;)", placeholder="Ej: He; She")
     ],
 
     outputs = gr.Dataframe(
