@@ -73,7 +73,7 @@ def evaluate_word_probs(frases, model_id):
 def predict(text, candidates):
     candidates_list = [c.strip() for c in candidates.split(';') if c.strip()]
     frases = [{"text": text, "words": candidates_list}]
-    results = evaluate_word_probs(frases, "google-bert/bert-base-multilingual-cased")
+    results = evaluate_word_probs(frases, "google-bert/bert-base-cased")
     
     output = []
     for result in results:
@@ -97,7 +97,8 @@ iface = gr.Interface(
 
     title="Comparación de probabilidades de palabras",
     description="""Este espacio recibe como entrada una frase y varias palabras con el objetivo de ver qué palabra cree el modelo del lenguaje que es más probable.
-    Cabe mencionar que el output del modelo, en porcentaje, no suma 100% ya que Softmax está aplicado a todos los posibles tokens, es decir, qué quiere decir que la probabilidad no es frente a la otra palabra, sino al globar de todo el vocabulario.
+    Cabe mencionar que el output del modelo, en porcentaje, no suma 100% ya que Softmax está aplicado a todos los posibles tokens, es decir, qué quiere decir que la probabilidad no es frente a la otra palabra, sino al global de todo el vocabulario.
+    El modelo por defecto es google-bert/bert-base-cased
     """
 )
 
