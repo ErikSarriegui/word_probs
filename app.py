@@ -87,7 +87,7 @@ iface = gr.Interface(
     inputs=[
         gr.Textbox(label="Texto con [MASK]", placeholder="Ej: [MASK] is a fashion model"),
         gr.Textbox(label="Candidatos (separados por ;)", placeholder="Ej: He; She"),
-        gr.Textbox(label="Model ID", value="google-bert/bert-base-uncased")
+        gr.Textbox(label="Model ID (Debe ser un encoder)", value="google-bert/bert-base-uncased")
     ],
 
     outputs = gr.Dataframe(
