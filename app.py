@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForMaskedLM, pipeline
+from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 import gradio as gr
 
