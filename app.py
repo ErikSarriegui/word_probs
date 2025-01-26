@@ -96,8 +96,8 @@ iface = gr.Interface(
         label="Resultados de Predicción"
     ),
 
-    title="Predictor de Lenguaje Enmascarado",
-    description="Ingresa un texto con [MASK], candidatos separados por ';' y un modelo de HF para obtener probabilidades."
+    title="Comparación de probabilidades de palabras",
+    description="Este espacio recibe como entrada una frase y varias palabras con el objetivo de ver qué palabra cree el modelo del lenguaje que es más probable."
 )
 
 iface.launch(server_name="0.0.0.0", server_port=7860)
