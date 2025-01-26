@@ -1,3 +1,4 @@
 gradio
 transformers
-uvicorn
+torch
+uvicorn[standard]
