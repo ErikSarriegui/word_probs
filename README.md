@@ -23,9 +23,4 @@ Word Probs es una herramienta que permite a los usuarios:
 
 ## 🚀 Demo
 
-Esta aplicación está disponible en Hugging Face Spaces: 
-[https://huggingface.co/spaces/eriksarriegui/word_probs](https://huggingface.co/spaces/eriksarriegui/word_probs)
-
-## 💻 Uso
-
-1. Ingrese un texto con el token [MASK] donde desee evaluar las palabras
+Esta aplicación está disponible en [Hugging Face Spaces](https://huggingface.co/spaces/eriksarriegui/word_probs)
