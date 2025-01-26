@@ -56,8 +56,8 @@ def evaluar_candidatos(logits, posiciones_mascaras, palabras_candidatas, tokeniz
     
     return resultados
 
-def evaluate_word_probs(frases, model_id, device="cpu"):
-    tokenizer, model = cargar_modelo_y_tokenizador("google-bert/bert-base-uncased")
+def evaluate_word_probs(frases, model_id):
+    tokenizer, model = cargar_modelo_y_tokenizador(model_id)
 
     textos, palabras_candidatas = procesar_frases(frases)
     inputs = tokenizar_textos(tokenizer, textos)
@@ -78,7 +78,7 @@ def predict(text, candidates, model_id):
     output = []
     for result in results:
         for word, prob in result['words'].items():
-            output.append([word, str(prob)])
+            output.append([word, str(prob*100) + "%"])
     
     return output
 
@@ -97,7 +97,9 @@ iface = gr.Interface(
     ),
 
     title="Comparación de probabilidades de palabras",
-    description="Este espacio recibe como entrada una frase y varias palabras con el objetivo de ver qué palabra cree el modelo del lenguaje que es más probable."
+    description="""Este espacio recibe como entrada una frase y varias palabras con el objetivo de ver qué palabra cree el modelo del lenguaje que es más probable.
+    Cabe mencionar que el output del modelo, en porcentaje, no suma 100% ya que Softmax está aplicado a todos los posibles tokens, es decir, qué quiere decir que la probabilidad no es frente a la otra palabra, sino al globar de todo el vocabulario.
+    """
 )
 
 iface.launch(server_name="0.0.0.0", server_port=7860)
